@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1064792050841",
+    "project_id": "whisperledger-94715",
+    "storage_bucket": "whisperledger-94715.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064792050841:android:9e30d27d9f6aa2e4fe3c08",
+        "android_client_info": {
+          "package_name": "com.whisperledger.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064792050841-6o95ku1g0u33rktaltl4ht02q8lqojaq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.whisperledger.app",
+            "certificate_hash": "535795c7db959df5ec7b5c2f4deef9027c7c8e55"
+          }
+        },
+        {
+          "client_id": "1064792050841-amo41uudlpvmuoou362ijcktfe198hdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyWPFvO_MDqJbRdMjIv0WUJP4wO93dFnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064792050841-amo41uudlpvmuoou362ijcktfe198hdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+Starting project at C:\Users\agarw\Downloads\Expense-Tracker-Pro\Expense-Tracker-Pro\artifacts\expense-tracker
+React Compiler enabled
+Metro is running in CI mode, reloads are disabled. Remove CI=true to enable watch mode.
+Starting Metro Bundler
+The following packages should be updated for best compatibility with the installed expo version:
+  expo-background-fetch@55.0.14 - expected version: ~14.0.9
+  expo-device@55.0.15 - expected version: ~8.0.10
+  expo-notifications@55.0.19 - expected version: ~0.32.16
+  expo-task-manager@55.0.14 - expected version: ~14.0.9
+Your project may not work correctly until you install the expected versions of the packages.
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+Web node_modules\.pnpm\expo-router@6.0.23_@types+r_abd38177f532ddff11e5834956475527\node_modules\expo-router\entry.js ▓▓░░░░░░░░░░░░░░ 16.0% ( 4/10)
+Web node_modules\.pnpm\expo-router@6.0.23_@types+r_abd38177f532ddff11e5834956475527\node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 64.0% (132/307)
+Web node_modules\.pnpm\expo-router@6.0.23_@types+r_abd38177f532ddff11e5834956475527\node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 64.0% (338/607)
+Web node_modules\.pnpm\expo-router@6.0.23_@types+r_abd38177f532ddff11e5834956475527\node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 72.2% (791/931)
+Web node_modules\.pnpm\expo-router@6.0.23_@types+r_abd38177f532ddff11e5834956475527\node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 89.9% (1125/1225)
+Web Bundled 19554ms node_modules\.pnpm\expo-router@6.0.23_@types+r_abd38177f532ddff11e5834956475527\node_modules\expo-router\entry.js (1479 modules)
+ LOG  [web] Logs will appear in the browser console
+^C

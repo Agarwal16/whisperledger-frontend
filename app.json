@@ -1,0 +1,79 @@
+{
+  "expo": {
+    "name": "WhisperLedger",
+    "slug": "whisperledger",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "whisperledger",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f172a"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.whisperledger.app"
+    },
+    "android": {
+      "package": "com.whisperledger.app",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "READ_SMS",
+        "RECEIVE_SMS",
+        "POST_NOTIFICATIONS",
+        "USE_BIOMETRIC",
+        "USE_FINGERPRINT",
+        "android.permission.INTERNET"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#0f172a"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/icon.png",
+          "color": "#4f46e5"
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow WhisperLedger to use Face ID for secure app unlock."
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow WhisperLedger to access your photos to set a profile picture.",
+          "colors": {
+            "cropToolbarColor": "#0f172a",
+            "cropToolbarIconColor": "#ffffff",
+            "cropToolbarActionTextColor": "#6366f1"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": false
+    }
+  }
+}
