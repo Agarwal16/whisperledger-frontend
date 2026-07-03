@@ -7,6 +7,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "admin:grant": "node scripts/grant-admin-claim.js",
+    "admin:revoke": "node scripts/grant-admin-claim.js --revoke",
     "serve": "firebase emulators:start --only functions",
     "deploy": "firebase deploy --only functions",
     "lint": "echo \"No lint configured\""
