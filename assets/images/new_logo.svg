@@ -24,6 +24,7 @@
     </filter>
   </defs>
 
+  <rect width="1024" height="1024" fill="#070B0F"/>
   <rect width="1024" height="1024" rx="232" fill="url(#bgGlow)"/>
   <circle cx="512" cy="356" r="290" fill="#20D6A3" opacity="0.08"/>
   <circle cx="770" cy="770" r="220" fill="#F8D97A" opacity="0.07"/>

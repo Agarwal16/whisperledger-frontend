@@ -21,7 +21,6 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -93,22 +92,31 @@ export default function AnalyticsScreen() {
 
   const selectedMonthStr = `${year}-${String(month).padStart(2, "0")}`;
   
-  const monthBudgetStatuses = budgets
-    .filter((b) => b.month === selectedMonthStr)
-    .map((b) => {
-      const spent = totals[b.categoryId] || 0;
-      const remaining = Math.max(0, b.monthlyLimit - spent);
-      const percentage = b.monthlyLimit > 0 ? (spent / b.monthlyLimit) * 100 : 0;
-      const status =
-        percentage >= 100
-          ? "exceeded"
-          : percentage >= 80
-          ? "critical"
-          : percentage >= 50
-          ? "warning"
-          : "safe";
-      return { ...b, spent, remaining, percentage, status };
-    });
+  const monthBudgetStatuses = React.useMemo(
+    () =>
+      budgets
+        .filter((b) => b.month === selectedMonthStr)
+        .map((b) => {
+          const spent = totals[b.categoryId] || 0;
+          const remaining = Math.max(0, b.monthlyLimit - spent);
+          const percentage = b.monthlyLimit > 0 ? (spent / b.monthlyLimit) * 100 : 0;
+          const status =
+            percentage >= 100
+              ? "exceeded"
+              : percentage >= 80
+              ? "critical"
+              : percentage >= 50
+              ? "warning"
+              : "safe";
+          return { ...b, spent, remaining, percentage, status };
+        }),
+    [budgets, selectedMonthStr, totals]
+  );
+
+  const sortedBudgetStatuses = React.useMemo(
+    () => [...monthBudgetStatuses].sort((a, b) => b.percentage - a.percentage),
+    [monthBudgetStatuses]
+  );
 
   const handleSetBudget = async () => {
     if (!selectedCategory) return;
@@ -119,10 +127,14 @@ export default function AnalyticsScreen() {
     }
     await setBudget(selectedCategory, limit, selectedMonthStr);
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    closeSetBudgetModal();
+  };
+
+  const closeSetBudgetModal = React.useCallback(() => {
     setShowSetModal(false);
     setSelectedCategory(null);
     setLimitInput("");
-  };
+  }, []);
 
   const handleDeleteBudget = (categoryId: CategoryId) => {
     Alert.alert(
@@ -164,9 +176,12 @@ export default function AnalyticsScreen() {
     return isDark ? "rgba(16,185,129,0.08)" : "#d1fae5";
   };
 
-  const categoriesWithBudget = monthBudgetStatuses.map((s) => s.categoryId);
-  const categoriesWithoutBudget = CATEGORIES.filter(
-    (c) => !categoriesWithBudget.includes(c.id)
+  const categoriesWithoutBudget = React.useMemo(
+    () => {
+      const categoriesWithBudget = new Set(monthBudgetStatuses.map((s) => s.categoryId));
+      return CATEGORIES.filter((c) => !categoriesWithBudget.has(c.id));
+    },
+    [monthBudgetStatuses]
   );
 
   const prev = getPrevMonth(year, month);
@@ -1205,9 +1220,7 @@ export default function AnalyticsScreen() {
                   ACTIVE BUDGETS
                 </Text>
 
-                {monthBudgetStatuses
-                  .sort((a, b) => b.percentage - a.percentage)
-                  .map((status) => {
+                {sortedBudgetStatuses.map((status) => {
                     const cat = CATEGORIES.find((c) => c.id === status.categoryId)!;
                     const sc = statusColor(status.status);
                     const sbg = statusBg(status.status);
@@ -1507,19 +1520,9 @@ export default function AnalyticsScreen() {
         visible={showSetModal}
         transparent
         animationType="slide"
-        onRequestClose={() => setShowSetModal(false)}
+        onRequestClose={closeSetBudgetModal}
       >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          style={{ flex: 1, justifyContent: "flex-end" }}
-        >
-          <TouchableOpacity
-            style={StyleSheet.absoluteFillObject}
-            activeOpacity={1}
-            onPress={() => setShowSetModal(false)}
-          >
-            <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)" }} />
-          </TouchableOpacity>
+        <Pressable style={s.modalOverlay} onPress={closeSetBudgetModal}>
           <View
             style={{
               backgroundColor: colors.card,
@@ -1528,6 +1531,7 @@ export default function AnalyticsScreen() {
               padding: 24,
               paddingBottom: Platform.OS === "ios" ? insets.bottom + 24 : 24,
             }}
+            onStartShouldSetResponder={() => true}
           >
             {selectedCategory && (() => {
               const cat = CATEGORIES.find((c) => c.id === selectedCategory)!;
@@ -1576,7 +1580,6 @@ export default function AnalyticsScreen() {
                       value={limitInput}
                       onChangeText={setLimitInput}
                       keyboardType="numeric"
-                      autoFocus
                       placeholder="5000"
                       placeholderTextColor={colors.mutedForeground}
                       style={{
@@ -1611,7 +1614,7 @@ export default function AnalyticsScreen() {
               );
             })()}
           </View>
-        </KeyboardAvoidingView>
+        </Pressable>
       </Modal>
 
       <Modal
