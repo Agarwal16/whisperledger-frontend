@@ -1,5 +1,3 @@
-console.error("DEBUG_LAYOUT_EVALUATED_12345");
-
 import {
   Inter_400Regular,
   Inter_500Medium,
@@ -41,12 +39,12 @@ import * as Device from "expo-device";
 import { BiometricGate } from "@/components/BiometricGate";
 
 // Initialize Sentry for crash reporting and performance monitoring
-// Sentry.init({
-//   dsn: "https://examplePublicKey@o0.ingest.sentry.io/0", // Replace with your actual DSN from sentry.io
-//   debug: false,
-//   tracesSampleRate: 0.2, // 20% of transactions for performance profiling
-//   environment: __DEV__ ? "development" : "production",
-// });
+Sentry.init({
+  dsn: "https://your-sentry-dsn@o0.ingest.sentry.io/0", // REPLACE with your actual DSN from sentry.io
+  debug: false,
+  tracesSampleRate: 0.2, // 20% of transactions for performance profiling
+  environment: __DEV__ ? "development" : "production",
+});
 
 
 function isPermissionDeniedError(error: unknown) {
@@ -89,10 +87,7 @@ function RootLayoutNav() {
   // Store a deep link that arrived before the router/auth was ready
   const pendingDeepLink = useRef<string | null>(null);
 
-  console.error("🚀 [RootLayoutNav] Rendering. isLoading:", isLoading, "isAuthReady:", isAuthReady, "hasUser:", !!user, "hasNavKey:", !!navigationState?.key);
-
   useEffect(() => {
-    console.error("📡 [RootLayoutNav] redirect useEffect triggered. isLoading:", isLoading, "isAuthReady:", isAuthReady, "hasNavKey:", !!navigationState?.key, "segments:", segments);
     if (isLoading || !navigationState?.key) return;
 
     const inAuthGroup = segments[0] === "login" || segments[0] === "register";
@@ -600,25 +595,19 @@ export default function RootLayout() {
   const [splashFinished, setSplashFinished] = useState(false);
   const [forceLoaded, setForceLoaded] = useState(false);
 
-  console.error("🚀 [RootLayout] Rendering. fontsLoaded:", fontsLoaded, "fontError:", fontError, "forceLoaded:", forceLoaded);
-
   useEffect(() => {
-    console.error("📡 [RootLayout] Mount useEffect triggered. fontsLoaded:", fontsLoaded, "fontError:", fontError);
     // Safety timer: force load resolution after 1.5 seconds if fonts fail to report status
     const timer = setTimeout(() => {
-      console.warn("⏰ [RootLayout] Font safety timeout fired! Forcing load resolution.");
       setForceLoaded(true);
       SplashScreen.hideAsync().catch(() => null);
     }, 1500);
 
     if (fontsLoaded || fontError) {
-      console.warn("✅ [RootLayout] Fonts resolved successfully. Clearing safety timer.");
       clearTimeout(timer);
       SplashScreen.hideAsync().catch(() => null);
     }
 
     return () => {
-      console.warn("🧹 [RootLayout] Cleaning up font loader timer.");
       clearTimeout(timer);
     };
   }, [fontsLoaded, fontError]);
@@ -637,7 +626,7 @@ export default function RootLayout() {
                     {resolvedLoaded ? (
                       <RootLayoutNav />
                     ) : (
-                      <View style={{ flex: 1, backgroundColor: "#050814" }} />
+                      <View style={{ flex: 1, backgroundColor: "#FFFFFF" }} />
                     )}
                     {!splashFinished && (
                       <AnimatedSplashScreen 

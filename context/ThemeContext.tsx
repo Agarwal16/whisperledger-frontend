@@ -14,15 +14,15 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const systemScheme = useColorScheme();
-  const [theme, setThemeState] = useState<ThemeType>("dark");
+  const [theme, setThemeState] = useState<ThemeType>("light");
 
   useEffect(() => {
     AsyncStorage.getItem("@app_theme").then((val) => {
       if (val === "dark" || val === "light") {
         setThemeState(val);
       } else {
-        // Fallback to system scheme if no custom preference is saved
-        setThemeState(systemScheme === "light" ? "light" : "dark");
+        // Fallback to light by default
+        setThemeState("light");
       }
     });
   }, [systemScheme]);

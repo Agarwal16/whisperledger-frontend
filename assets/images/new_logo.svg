@@ -1,0 +1,14 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="white"/>
+  
+  <!-- Chat Bubble (Whisper) -->
+  <path d="M512 150C300.2 150 128 297.8 128 480C128 584.5 197.8 676.2 305.5 738.5L256 874L412.8 812.2C444.2 822.4 477.5 828 512 828C723.8 828 896 680.2 896 498C896 315.8 723.8 168 512 168V150Z" fill="#0066FF"/>
+  
+  <!-- Coin (Ledger) -->
+  <circle cx="512" cy="480" r="180" fill="#FFFFFF"/>
+  <circle cx="512" cy="480" r="150" fill="#0066FF" opacity="0.1"/>
+  
+  <!-- Currency Symbol ($ style) -->
+  <path d="M512 360V600M440 400C440 400 460 380 512 380C564 380 584 400 584 440C584 480 564 500 512 500C460 500 440 520 440 560C440 600 460 620 512 620C564 620 584 600 584 600M512 340V360M512 600V620" stroke="#0066FF" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -42,28 +42,28 @@ const ONBOARDING_SLIDES: OnboardingSlide[] = [
     subtitle: "Zero-Knowledge Storage",
     desc: "All transaction logs and expense data live strictly offline on your device. Your financial secrets are 100% secure.",
     icon: "shield",
-    gradient: ["#0f172a", "#1e293b"],
+    gradient: ["#2563EB", "#1E40AF"],
   },
   {
     title: "SMS Auto-Sync",
     subtitle: "Effortless Automation",
     desc: "WhisperLedger monitors incoming transaction SMS alerts in the background and automatically categorizes them in seconds.",
     icon: "zap",
-    gradient: ["#4f46e5", "#312e81"],
+    gradient: ["#3B82F6", "#1D4ED8"],
   },
   {
     title: "Visual Analytics",
     subtitle: "Beautiful Ledger Details",
     desc: "Export credit-card-style PDF statements and view color-coded category shares with a single tap.",
     icon: "bar-chart-2",
-    gradient: ["#7c3aed", "#4c1d95"],
+    gradient: ["#6366F1", "#4338CA"],
   },
   {
     title: "Direct Support",
     subtitle: "Connected Support Desk",
     desc: "Submit support cases natively inside the app and receive push notifications from our admin desk instantly.",
     icon: "life-buoy",
-    gradient: ["#06b6d4", "#0891b2"],
+    gradient: ["#0EA5E9", "#0369A1"],
   },
 ];
 

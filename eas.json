@@ -14,11 +14,19 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "SENTRY_SKIP_AUTO_RELEASE": "true",
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
       }
     },
     "production": {
       "android": {
         "buildType": "app-bundle"
+      },
+      "env": {
+        "SENTRY_SKIP_AUTO_RELEASE": "true",
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
       }
     }
   },

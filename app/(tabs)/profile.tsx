@@ -292,7 +292,12 @@ export default function ProfileScreen() {
         ]
       );
     } catch (err: any) {
-      Alert.alert("SMS Sync Error", err.message);
+      if (Platform.OS !== "android") {
+        Alert.alert("Feature Limited", "SMS Auto-Sync is an Android-exclusive feature. You can still add expenses manually on iOS.");
+        setAutoSyncEnabled(false);
+        return;
+      }
+      Alert.alert("SMS Sync Error", "Could not access SMS messages. Please ensure you have granted the required permissions in your device settings.");
       setAutoSyncEnabled(false);
       await AsyncStorage.setItem("@auto_sync_enabled", "false");
     }

@@ -1,39 +1,39 @@
 const colors = {
   light: {
     text: "#0f172a",
-    tint: "#4F46E5",
+    tint: "#0066FF",
 
-    background: "#F3F4F6",
+    background: "#FFFFFF",
     foreground: "#0f172a",
 
-    card: "#ffffff",
+    card: "#FFFFFF",
     cardForeground: "#0f172a",
 
-    primary: "#4F46E5",
-    primaryForeground: "#ffffff",
+    primary: "#0066FF",
+    primaryForeground: "#FFFFFF",
 
-    secondary: "#f1f5f9",
-    secondaryForeground: "#1e293b",
+    secondary: "#F0F7FF",
+    secondaryForeground: "#1E3A8A",
 
-    muted: "#e2e8f0",
-    mutedForeground: "#64748b",
+    muted: "#F1F5F9",
+    mutedForeground: "#64748B",
 
-    accent: "#ecfdf5",
-    accentForeground: "#059669",
+    accent: "#EFF6FF",
+    accentForeground: "#1E40AF",
 
-    destructive: "#ef4444",
-    destructiveForeground: "#ffffff",
+    destructive: "#EF4444",
+    destructiveForeground: "#FFFFFF",
 
-    border: "rgba(15, 23, 42, 0.08)",
-    input: "#e2e8f0",
+    border: "rgba(0, 102, 255, 0.08)",
+    input: "#F1F5F9",
 
-    success: "#059669",
-    successLight: "#d1fae5",
-    warning: "#d97706",
-    warningLight: "#fef3c7",
+    success: "#10B981",
+    successLight: "#D1FAE5",
+    warning: "#F59E0B",
+    warningLight: "#FEF3C7",
 
-    tabBar: "#ffffff",
-    headerBg: "#ffffff",
+    tabBar: "#FFFFFF",
+    headerBg: "#FFFFFF",
   },
 
   dark: {

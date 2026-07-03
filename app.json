@@ -6,12 +6,12 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "whisperledger",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": false,
     "splash": {
       "image": "./assets/images/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0f172a"
+      "backgroundColor": "#FFFFFF"
     },
     "ios": {
       "supportsTablet": false,
@@ -21,16 +21,17 @@
       "package": "com.whisperledger.app",
       "googleServicesFile": "./google-services.json",
       "permissions": [
-        "READ_SMS",
-        "RECEIVE_SMS",
-        "POST_NOTIFICATIONS",
-        "USE_BIOMETRIC",
-        "USE_FINGERPRINT",
-        "android.permission.INTERNET"
+        "android.permission.READ_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT",
+        "android.permission.INTERNET",
+        "android.permission.RECORD_AUDIO"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
-        "backgroundColor": "#0f172a"
+        "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
@@ -55,7 +56,7 @@
       [
         "expo-local-authentication",
         {
-          "faceIDPermission": "Allow WhisperLedger to use Face ID for secure app unlock."
+          "faceIDPermission": "Unlock WhisperLedger securely using your biometrics."
         }
       ],
       "expo-secure-store",
@@ -69,11 +70,28 @@
             "cropToolbarActionTextColor": "#6366f1"
           }
         }
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "organization": "whisperledger",
+          "project": "whisperledger-app"
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": false
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": "https://replit.com/"
+      },
+      "eas": {
+        "projectId": "71500397-9a26-40a5-adcc-e5e634be150c"
+      }
+    },
+    "owner": "tanmay16"
   }
 }

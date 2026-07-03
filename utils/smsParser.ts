@@ -40,24 +40,36 @@ export async function requestSmsPermission(): Promise<boolean> {
     return false;
   }
 }
-
 export async function fetchAndParseSMS(minDateMs: number): Promise<ParsedSMS[]> {
-  if (!SmsAndroid || Platform.OS !== "android") return [];
+  if (Platform.OS !== "android") {
+    console.warn("SMS Auto-Sync is only available on Android devices.");
+    return [];
+  }
 
-  return new Promise((resolve, reject) => {
-    SmsAndroid.list(
-      JSON.stringify({ box: "inbox", minDate: minDateMs }),
-      (fail: string) => reject(new Error(fail)),
-      (_count: number, smsListStr: string) => {
-        try {
-          const smsList = JSON.parse(smsListStr);
-          resolve(parseMessages(Array.isArray(smsList) ? smsList : []));
-        } catch (e) {
-          reject(e);
+  if (!SmsAndroid) {
+    console.warn("SMS library not found. Ensure react-native-get-sms-android is installed.");
+    return [];
+  }
+
+  try {
+    return await new Promise((resolve, reject) => {
+      SmsAndroid.list(
+        JSON.stringify({ box: "inbox", minDate: minDateMs }),
+        (fail: string) => reject(new Error(fail)),
+        (_count: number, smsListStr: string) => {
+          try {
+            const smsList = JSON.parse(smsListStr);
+            resolve(parseMessages(Array.isArray(smsList) ? smsList : []));
+          } catch (e) {
+            reject(e);
+          }
         }
-      }
-    );
-  });
+      );
+    });
+  } catch (err) {
+    console.warn("[SMS Parser] Failed to fetch SMS:", err);
+    return [];
+  }
 }
 
 // ─────────────────────────────────────────────────────────────
